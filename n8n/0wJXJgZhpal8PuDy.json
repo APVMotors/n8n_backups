@@ -1,0 +1,31 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-11-14T00:59:44.977Z",
+  "id": "0wJXJgZhpal8PuDy",
+  "isArchived": false,
+  "meta": null,
+  "name": "Agregar correo a sendpulse",
+  "nodes": [],
+  "pinData": {},
+  "repo_name": "n8n_backups",
+  "repo_owner": "APVMotors",
+  "repo_path": "n8n",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-14T00:59:44.977Z",
+      "createdAt": "2025-11-14T00:59:44.977Z",
+      "role": "workflow:owner",
+      "workflowId": "0wJXJgZhpal8PuDy",
+      "projectId": "b2lVB0vkIPboFk2w"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-14T00:59:44.977Z",
+  "versionId": "f2b4fb2c-25ae-47ef-8dbf-fecb295bc225"
+}
