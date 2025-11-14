@@ -1,0 +1,75 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "enviar error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-13T14:57:59.563Z",
+  "id": "IynjMlXO2S8zalog",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Aviso de errores",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f828739e-294b-4643-b70f-dc3e3e43b0af",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://appwebhook.gianmarcorusher.com/webhook/0d5a8b76-714f-46bc-b387-d1d4bafb552b",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Error Trigger').item.json.toJsonString() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "8bd47b8b-7b20-47e0-adb7-fcfe20bb6b4f",
+      "name": "enviar error"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_backups",
+  "repo_owner": "APVMotors",
+  "repo_path": "n8n",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-13T14:57:59.563Z",
+      "createdAt": "2025-11-13T14:57:59.563Z",
+      "role": "workflow:owner",
+      "workflowId": "IynjMlXO2S8zalog",
+      "projectId": "b2lVB0vkIPboFk2w"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-14T00:28:36.940Z",
+  "versionId": "f44e7bf9-f0ef-41a1-92b6-476390e89493"
+}
