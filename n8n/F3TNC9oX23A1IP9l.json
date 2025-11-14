@@ -1,0 +1,1040 @@
+{
+  "active": false,
+  "connections": {
+    "canal": {
+      "main": [
+        [
+          {
+            "node": "Obtener ID de numero1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "parafrasear13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener ID de numero1": {
+      "main": [
+        [
+          {
+            "node": "parafrasear9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "parafrasear9": {
+      "main": [
+        [
+          {
+            "node": "parafrasear10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "parafrasear10": {
+      "main": [
+        [
+          {
+            "node": "Variables iniciales1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "parafrasear13": {
+      "main": [
+        [
+          {
+            "node": "Variables iniciales1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "canal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variables iniciales1": {
+      "main": [
+        [
+          {
+            "node": "solo si tiene correo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "solo si tiene correo": {
+      "main": [
+        [
+          {
+            "node": "extraer correos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "obtener contacto": {
+      "main": [
+        [
+          {
+            "node": "custom fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "custom fields": {
+      "main": [
+        [
+          {
+            "node": "Existe correo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Existe correo": {
+      "main": [
+        [
+          {
+            "node": "correos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "correos extraidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "correos extraidos": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Update contacts1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "correos": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "correo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "correo": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "correos_nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "correos_nuevos": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "no debe existir el correo antes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "no debe existir el correo antes": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Update contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "extraer correos": {
+      "main": [
+        [
+          {
+            "node": "obtener contacto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-13T15:07:37.421Z",
+  "id": "F3TNC9oX23A1IP9l",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Guardado de correo automatico",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bdf4dabf-ceb6-4e02-907d-217c29d6108f",
+                    "leftValue": "={{ $('Start').item.json.body['message[add][0][origin]'] }}",
+                    "rightValue": "onlinechat",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "onlinechat"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        192,
+        0
+      ],
+      "id": "111faa0c-9c4f-4d14-8cb1-faec5315cf97",
+      "name": "canal"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3903796b-557c-4538-b0a6-80e2ece5f217",
+              "name": "id_lead",
+              "value": "={{ $('Start').item.json.body['message[add][0][entity_id]'] }}",
+              "type": "number"
+            },
+            {
+              "id": "8f78a44e-8d71-4394-a311-d30cb58400c8",
+              "name": "fuente_id",
+              "value": 0,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        832,
+        144
+      ],
+      "id": "706b076e-0d05-467b-b959-d84f9a686499",
+      "name": "parafrasear13"
+    },
+    {
+      "parameters": {
+        "url": "=https://apvmotorusa.kommo.com/api/v4/talks/{{ $json.body['message[add][0][talk_id]'] }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        -176
+      ],
+      "id": "3e41b721-0c29-4b1a-99a0-b1482c76aab9",
+      "name": "Obtener ID de numero1",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "kyUWAh8aRDwk9A9N",
+          "name": "kommo-APV-motors"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.data }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        640,
+        -176
+      ],
+      "id": "35d73b16-9be4-4518-aa3a-2b240d1759b4",
+      "name": "parafrasear9"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3903796b-557c-4538-b0a6-80e2ece5f217",
+              "name": "id_lead",
+              "value": "={{ $json.entity_id }}",
+              "type": "number"
+            },
+            {
+              "id": "05ae8d1f-3b9e-442f-90d5-e9db1dd7bf14",
+              "name": "fuente_id",
+              "value": "={{ $('parafrasear9').item.json.source_id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        832,
+        -176
+      ],
+      "id": "0efedf76-130d-4aea-9675-ffa6c7a58768",
+      "name": "parafrasear10"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fc5c3901-d1b5-4098-8cf7-59b95e3101ce",
+      "name": "Start"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b48db26d-0f18-44eb-89b4-cccc3a1c0f74",
+              "name": "id_lead",
+              "value": "={{ $json.id_lead }}",
+              "type": "number"
+            },
+            {
+              "id": "12b3b121-2097-47cc-8f81-4a4dc9f7eb49",
+              "name": "id_contact",
+              "value": "={{ $('Start').item.json.body['message[add][0][contact_id]'] }}",
+              "type": "number"
+            },
+            {
+              "id": "b5282e3e-40e2-4288-a502-872fae0ea4b5",
+              "name": "mensaje_inicial",
+              "value": "={{ $('Start').item.json.body['message[add][0][text]'] }}",
+              "type": "string"
+            },
+            {
+              "id": "84497104-ff45-4ec5-8bb2-0208cc47c263",
+              "name": "fuente",
+              "value": "={{ $if($('Start').item.json.body['message[add][0][origin]']===\"instagram_business\",\"Instagram\",\n\n$if($('Start').item.json.body['message[add][0][origin]']===\"waba\",\"Whatsapp Bussiness\",\n\n($if($('Start').item.json.body['message[add][0][origin]']===\"facebook\",\"Messenger\",\n($if($('Start').item.json.body['message[add][0][origin]']===\"tiktok_kommo\",\"TikTok\",\n\n($if($('Start').item.json.body['message[add][0][origin]']===\"onlinechat\",\"onlinechat\",\"\"))\n\n\n)\n\n))))\n\n) }}",
+              "type": "string"
+            },
+            {
+              "id": "680c6802-e67c-498c-aee1-d8fa414bcec2",
+              "name": "tipo_de_mensaje",
+              "value": "={{ $if($('Start').item.json.body['message[add][0][text]'].length > 0,\"Texto\",\n\n$if($('Start').item.json.body['message[add][0][attachment][type]'] === \"voice\",\"Audio\",\n\n$if($('Start').item.json.body['message[add][0][attachment][type]'] === \"picture\",\"Imagen\",\"\"))\n\n\n) }}",
+              "type": "string"
+            },
+            {
+              "id": "caa84fc0-c152-4995-8755-a9b358f283c2",
+              "name": "fuente_id",
+              "value": "={{ $json.fuente_id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1136,
+        16
+      ],
+      "id": "d11be53d-463c-4edb-ace7-a860b2bd16de",
+      "name": "Variables iniciales1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f54dd680-3169-491d-8fea-339f16f77aa5",
+              "leftValue": "={{ $('Variables iniciales1').item.json.mensaje_inicial}}a@gd.ci",
+              "rightValue": "\\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\\b",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1344,
+        16
+      ],
+      "id": "56b12d72-0609-4884-ae01-18073873f42f",
+      "name": "solo si tiene correo"
+    },
+    {
+      "parameters": {
+        "resource": "contacts",
+        "filter": {
+          "id": "={{ $('Variables iniciales1').item.json.id_contact }}"
+        },
+        "options": {},
+        "limit": 1
+      },
+      "type": "n8n-nodes-kommo.kommo",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        16
+      ],
+      "id": "f1ae6647-254f-42c7-b6b6-ee37bcd34bd2",
+      "name": "obtener contacto",
+      "credentials": {
+        "kommoOAuth2Api": {
+          "id": "y2KeFBJwvTPMiZYT",
+          "name": "apvmotors"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5e208333-c3bb-4f52-ab40-b6e3f6441403",
+              "name": "custom_fields",
+              "value": "={{ $json._embedded.contacts[0].custom_fields_values }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1968,
+        16
+      ],
+      "id": "716a7e28-8083-4de6-8926-f56bd375856f",
+      "name": "custom fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "24acc389-8cb0-43ce-aa13-23efe2b86b6d",
+              "leftValue": "={{ $('custom fields').item.json.custom_fields.filter(item => item.field_id==479326).map(item => item.field_name).join() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2176,
+        16
+      ],
+      "id": "b658a17c-1ea0-4a51-bd3f-7c67ce578dbb",
+      "name": "Existe correo"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "caaab215-cb86-48b3-8461-32b5f421e800",
+              "name": "correos_extraidos",
+              "value": "={{ $('extraer correos').item.json.correosDelMensajeInicial }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2464,
+        112
+      ],
+      "id": "55a49e55-ce61-40a9-9cc0-f9e1585ffb41",
+      "name": "correos extraidos"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "correos_extraidos",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2672,
+        112
+      ],
+      "id": "96122a46-c8c9-46f9-bb5d-f4fdbb925be9",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36fe688e-b20a-4fb8-bf51-5d35ac1d9828",
+              "name": "value",
+              "value": "={{ $json.correos_extraidos }}",
+              "type": "string"
+            },
+            {
+              "id": "91fed5e1-291b-48e4-a9bf-8d242e86b7c9",
+              "name": "enum_code",
+              "value": "WORK",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2880,
+        112
+      ],
+      "id": "6701ca11-3dc1-450e-85c4-19ae5a75c8f5",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "values",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3088,
+        112
+      ],
+      "id": "42ddeebd-ef23-448a-b39f-a62c5dfa278a",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "correos[0]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2672,
+        -272
+      ],
+      "id": "6d35ab62-ac85-488c-8ac5-f9224937d672",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0e224791-6103-43aa-bdd3-0786167a5e5f",
+              "name": "correos",
+              "value": "={{ $('custom fields').item.json.custom_fields.filter(item => item.field_id==479326).map(item => item.values) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2464,
+        -272
+      ],
+      "id": "f8d6fe32-6bc5-4c1f-b4bb-db874b963ff9",
+      "name": "correos"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "abfe92b4-145b-4a29-b2c6-835d898df2db",
+              "name": "value",
+              "value": "={{ $json.value }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2880,
+        -272
+      ],
+      "id": "06c5111e-bda4-40a8-a734-39bece9b44d1",
+      "name": "correo"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "value",
+              "renameField": true,
+              "outputFieldName": "correos_contacto"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3088,
+        -272
+      ],
+      "id": "5734fc38-64ee-48e0-a6d3-12dfc9aa1db8",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cb26310e-e1dd-4556-b784-569e7ca7aebc",
+              "name": "correosDelMensajeInicial",
+              "value": "={{ $('extraer correos').item.json.correosDelMensajeInicial }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3296,
+        -272
+      ],
+      "id": "7bf1df30-17b6-43c1-bbd8-eac9616022cd",
+      "name": "correos_nuevos"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "correosDelMensajeInicial",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3488,
+        -272
+      ],
+      "id": "d18bb0d6-78bb-4d38-b66a-aae9c73e34a7",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "19b1b34d-ae2f-4d97-b0a2-3b8c183c2a40",
+              "leftValue": "={{ $('Aggregate1').item.json.correos_contacto }}",
+              "rightValue": "={{ $json.correosDelMensajeInicial }}",
+              "operator": {
+                "type": "array",
+                "operation": "notContains",
+                "rightType": "any"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        3696,
+        -272
+      ],
+      "id": "4cf05bb7-8570-41da-9788-84f2878e31e3",
+      "name": "no debe existir el correo antes"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36fe688e-b20a-4fb8-bf51-5d35ac1d9828",
+              "name": "value",
+              "value": "={{ $json.correosDelMensajeInicial }}",
+              "type": "string"
+            },
+            {
+              "id": "91fed5e1-291b-48e4-a9bf-8d242e86b7c9",
+              "name": "enum_code",
+              "value": "WORK",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3936,
+        -272
+      ],
+      "id": "d4dc16bb-586c-4625-83f3-45516e4568f6",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "values",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        4192,
+        -272
+      ],
+      "id": "b5ef49ea-402a-4204-adfb-0fcb93c10976",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "resource": "contacts",
+        "operation": "updateContacts",
+        "json": true,
+        "jsonString": "=[\n{\n  \"id\": {{ $('Variables iniciales1').item.json.id_contact }},\n  \"custom_fields_values\": [\n    {\n      \"field_id\": 479326,\n\"values\": [\n{{ $('Aggregate2').item.json.values.toJsonString().replaceAll(\"[\",\"\").replaceAll(\"]\",\"\") }},{{ $('correos').item.json.correos[0].toJsonString().replaceAll(\"[\",\"\").replaceAll(\"]\",\"\") }}\n]\n    }\n  ]\n}\n]"
+      },
+      "type": "n8n-nodes-kommo.kommo",
+      "typeVersion": 1,
+      "position": [
+        4416,
+        -272
+      ],
+      "id": "c0179af1-8e60-4033-8ecd-e472654b17ff",
+      "name": "Update contacts",
+      "credentials": {
+        "kommoOAuth2Api": {
+          "id": "y2KeFBJwvTPMiZYT",
+          "name": "apvmotors"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contacts",
+        "operation": "updateContacts",
+        "json": true,
+        "jsonString": "=[\n{\n  \"id\": {{ $('Variables iniciales1').item.json.id_contact }},\n  \"custom_fields_values\": [\n    {\n      \"field_id\": 479326,\n\"values\": [\n{{ $('Aggregate').item.json.values.toJsonString().replaceAll(\"[\",\"\").replaceAll(\"]\",\"\") }}\n]\n    }\n  ]\n}\n]"
+      },
+      "type": "n8n-nodes-kommo.kommo",
+      "typeVersion": 1,
+      "position": [
+        3312,
+        112
+      ],
+      "id": "aba83379-91ad-456c-a3c5-e509f6ba32df",
+      "name": "Update contacts1",
+      "credentials": {
+        "kommoOAuth2Api": {
+          "id": "y2KeFBJwvTPMiZYT",
+          "name": "apvmotors"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// --- 1. OBTENER EL TEXTO (UNA SOLA VEZ) ---\n// Esta es la sintaxis de JavaScript para \"Code\" node que equivale a tu expresión:\n// $('Variables iniciales1').first().json.mensaje_inicial\nconst textoOriginal = $('Variables iniciales1').first().json.mensaje_inicial;\n\n// --- 2. EXTRAER LOS CORREOS (UNA SOLA VEZ) ---\nconst emailRegex = /\\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\\b/g;\nlet correosEncontrados = [];\n\nif (typeof textoOriginal === 'string' && textoOriginal) {\n  // .match() devuelve un array con las coincidencias, o 'null' si no encuentra.\n  // Usamos '|| []' para asegurarnos de que 'correosEncontrados' sea siempre un array.\n  correosEncontrados = textoOriginal.match(emailRegex) || [];\n}\n\n// --- 3. PROCESAR LOS ÍTEMS ---\n// Iteramos sobre CADA ítem que viene del nodo anterior\nfor (const item of items) {\n  \n  // Añadimos la lista de correos (que es la misma para todos)\n  // a cada ítem que pasa por el nodo.\n  item.json.correosDelMensajeInicial = correosEncontrados; // <-- Puedes cambiar este nombre\n}\n\n// Devolvemos los ítems enriquecidos\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1552,
+        16
+      ],
+      "id": "b77db78e-b385-4e1c-9480-58515b4542e5",
+      "name": "extraer correos"
+    }
+  ],
+  "pinData": {
+    "Start": [
+      {
+        "json": {
+          "headers": {
+            "host": "primary-production-dc03a.up.railway.app",
+            "user-agent": "amoCRM-Webhooks/3.0",
+            "content-length": "958",
+            "accept-encoding": "gzip",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-amocrm-requestid": "fa2e7ddc-2d7d-4892-bf36-fa6e1f2e8c81",
+            "x-forwarded-for": "204.74.253.164",
+            "x-forwarded-host": "primary-production-dc03a.up.railway.app",
+            "x-forwarded-proto": "https",
+            "x-railway-edge": "railway/us-east4-eqdc4a",
+            "x-railway-request-id": "BA4hOai0RR63qEiTAax-fw",
+            "x-real-ip": "204.74.253.164",
+            "x-request-start": "1763046634552"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account[subdomain]": "apvmotorusa",
+            "account[id]": "15746002",
+            "account[_links][self]": "https://apvmotorusa.amocrm.com",
+            "message[add][0][id]": "6bc2c8c1-2152-4b13-b48b-e52738533fc8",
+            "message[add][0][chat_id]": "39e38188-023c-46af-a1f5-56096624afed",
+            "message[add][0][talk_id]": "2521",
+            "message[add][0][contact_id]": "23470102",
+            "message[add][0][text]": "Más tarde te consigno para la Subasta del\nLunes",
+            "message[add][0][created_at]": "1763046633",
+            "message[add][0][element_type]": "2",
+            "message[add][0][entity_type]": "lead",
+            "message[add][0][element_id]": "15320894",
+            "message[add][0][entity_id]": "15320894",
+            "message[add][0][type]": "incoming",
+            "message[add][0][author][id]": "917fbb84-d624-4ef7-bedd-3caa8907aace",
+            "message[add][0][author][type]": "external",
+            "message[add][0][author][name]": "Jhon",
+            "message[add][0][origin]": "waba"
+          },
+          "webhookUrl": "https://primary-production-dc03a.up.railway.app/webhook/58a945a2-b1bb-4c41-a98e-dae060d622e3",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_backups",
+  "repo_owner": "APVMotors",
+  "repo_path": "n8n",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "IynjMlXO2S8zalog"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-13T15:07:37.421Z",
+      "createdAt": "2025-11-13T15:07:37.421Z",
+      "role": "workflow:owner",
+      "workflowId": "F3TNC9oX23A1IP9l",
+      "projectId": "b2lVB0vkIPboFk2w"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-14T00:46:12.768Z",
+  "versionId": "da3f7560-dbb3-4e51-a6fd-d08791253244"
+}
