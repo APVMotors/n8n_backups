@@ -1,0 +1,192 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "tiene que ser el 3.0",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tiene que ser el 3.0": {
+      "main": [
+        [
+          {
+            "node": "Guardado de correo automatico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-13T14:24:13.945Z",
+  "id": "7b2aydkZ7kImrhbA",
+  "isArchived": false,
+  "meta": null,
+  "name": "Trigger mensajes Kommo",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "58a945a2-b1bb-4c41-a98e-dae060d622e3",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -272,
+        0
+      ],
+      "id": "a6450070-5871-4bda-817a-4be29b576e05",
+      "name": "Webhook",
+      "webhookId": "58a945a2-b1bb-4c41-a98e-dae060d622e3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c8dc2d66-8f42-40d6-aa01-00398a7c12a2",
+              "leftValue": "={{ $json.headers['user-agent'] }}",
+              "rightValue": "amoCRM-Webhooks/3.0",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -48,
+        0
+      ],
+      "id": "19964d73-6e6f-4ece-af41-4494b474b234",
+      "name": "tiene que ser el 3.0"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "F3TNC9oX23A1IP9l",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/F3TNC9oX23A1IP9l",
+          "cachedResultName": "Guardado de correo automatico"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "body": "={{ $('Webhook').item.json.body }}"
+          },
+          "matchingColumns": [
+            "body"
+          ],
+          "schema": [
+            {
+              "id": "body",
+              "displayName": "body",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        0
+      ],
+      "name": "Guardado de correo automatico",
+      "id": "d3e9a6be-a9e1-4bea-b25c-22d5883ec966"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "primary-production-dc03a.up.railway.app",
+            "user-agent": "amoCRM-Webhooks/3.0",
+            "content-length": "929",
+            "accept-encoding": "gzip",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-amocrm-requestid": "802c784e-537b-4667-b4ef-ea9d55ebcba4",
+            "x-forwarded-for": "204.74.253.164",
+            "x-forwarded-host": "primary-production-dc03a.up.railway.app",
+            "x-forwarded-proto": "https",
+            "x-railway-edge": "railway/us-east4-eqdc4a",
+            "x-railway-request-id": "ljsE6g5jT8O25tyhCx5-qw",
+            "x-real-ip": "204.74.253.164",
+            "x-request-start": "1763046462556"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account[subdomain]": "apvmotorusa",
+            "account[id]": "34624807",
+            "account[_links][self]": "https://apvmotorusa.amocrm.com",
+            "message[add][0][id]": "157ce663-3b17-4cc7-8282-c83b952b4dc5",
+            "message[add][0][chat_id]": "b21a4baf-62b2-424d-bdaa-ff30d7e146e1",
+            "message[add][0][talk_id]": "8800",
+            "message[add][0][contact_id]": "23552894",
+            "message[add][0][text]": "Info",
+            "message[add][0][created_at]": "1763046452",
+            "message[add][0][element_type]": "2",
+            "message[add][0][entity_type]": "lead",
+            "message[add][0][element_id]": "15820330",
+            "message[add][0][entity_id]": "15820330",
+            "message[add][0][type]": "incoming",
+            "message[add][0][author][id]": "6a2bc6dd-5004-4869-ac8f-81741dbe6915",
+            "message[add][0][author][type]": "external",
+            "message[add][0][author][name]": "forasteroso",
+            "message[add][0][origin]": "instagram_business"
+          },
+          "webhookUrl": "https://primary-production-dc03a.up.railway.app/webhook/58a945a2-b1bb-4c41-a98e-dae060d622e3",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_backups",
+  "repo_owner": "APVMotors",
+  "repo_path": "n8n",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-13T14:24:13.945Z",
+      "createdAt": "2025-11-13T14:24:13.945Z",
+      "role": "workflow:owner",
+      "workflowId": "7b2aydkZ7kImrhbA",
+      "projectId": "b2lVB0vkIPboFk2w"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-11-14T00:29:21.289Z",
+  "versionId": "b3b37604-9787-415d-a56e-003af72c69f7"
+}
