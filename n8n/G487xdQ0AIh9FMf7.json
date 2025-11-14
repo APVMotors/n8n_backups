@@ -1,0 +1,172 @@
+{
+  "active": false,
+  "connections": {
+    "n8n": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Call 'Iniciar backups'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "n8n",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Iniciar backups'": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-13T17:36:38.214Z",
+  "id": "G487xdQ0AIh9FMf7",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Ejecutar backups escenarios",
+  "nodes": [
+    {
+      "parameters": {
+        "returnAll": false,
+        "limit": 1,
+        "filters": {},
+        "requestOptions": {}
+      },
+      "id": "0edfffbc-1e10-43e9-ab9c-58e0f26a225a",
+      "name": "n8n",
+      "type": "n8n-nodes-base.n8n",
+      "position": [
+        816,
+        -16
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "n8nApi": {
+          "id": "fNo0eeGLpqZ9qv9t",
+          "name": "apv_motors_1"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e003ba19-916c-444e-a2c4-4ddc546b6d64",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        1008,
+        -16
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 1,
+              "triggerAtMinute": 33
+            }
+          ]
+        }
+      },
+      "id": "b2f2c898-e8f9-4343-ba38-4af6260d02c3",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        544,
+        -16
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "TAHby0ki3qFKkBHS",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/TAHby0ki3qFKkBHS",
+          "cachedResultName": "Iniciar backups"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1296,
+        96
+      ],
+      "id": "b8830e17-e86e-46ec-bf02-451620e0620b",
+      "name": "Call 'Iniciar backups'",
+      "alwaysOutputData": false,
+      "onError": "continueErrorOutput"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_backups",
+  "repo_owner": "APVMotors",
+  "repo_path": "n8n",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-13T17:36:38.214Z",
+      "createdAt": "2025-11-13T17:36:38.214Z",
+      "role": "workflow:owner",
+      "workflowId": "G487xdQ0AIh9FMf7",
+      "projectId": "b2lVB0vkIPboFk2w"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-13T17:41:52.895Z",
+  "versionId": "a7559af9-e6bf-40a3-8902-f013842f1ce2"
+}
