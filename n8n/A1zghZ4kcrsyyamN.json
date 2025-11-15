@@ -1,0 +1,137 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-11-14T18:08:08.086Z",
+  "id": "A1zghZ4kcrsyyamN",
+  "isArchived": false,
+  "meta": null,
+  "name": "Actualizacion de contacto",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "21517446-f724-499a-b1ae-6ada9fdd726f",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "606be9a2-6c99-47f5-a6a4-e325e5bc7a1e",
+      "name": "Webhook",
+      "webhookId": "21517446-f724-499a-b1ae-6ada9fdd726f"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "XNhrnjUDaImQjzT0",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/XNhrnjUDaImQjzT0",
+          "cachedResultName": "Agregar correo a sendpulse"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        304,
+        0
+      ],
+      "id": "98ce0aec-2fcc-4a3b-8be6-fb347aa3040c",
+      "name": "Agregar correo a sendpulse"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "primary-production-dc03a.up.railway.app",
+            "user-agent": "amoCRM-Webhooks/3.0",
+            "content-length": "1690",
+            "accept-encoding": "gzip",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-amocrm-requestid": "fa7c2934-ea6c-4d1e-b60e-eb18f20cf96f",
+            "x-forwarded-for": "204.74.253.164",
+            "x-forwarded-host": "primary-production-dc03a.up.railway.app",
+            "x-forwarded-proto": "https",
+            "x-railway-edge": "railway/us-east4-eqdc4a",
+            "x-railway-request-id": "1c3J3YiDTcqiECEeBT7zVQ",
+            "x-real-ip": "204.74.253.164",
+            "x-request-start": "1763143786321"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account[subdomain]": "apvmotorusa",
+            "account[id]": "34624807",
+            "account[_links][self]": "https://apvmotorusa.amocrm.com",
+            "contacts[update][0][id]": "18014940",
+            "contacts[update][0][name]": "HIZAN",
+            "contacts[update][0][responsible_user_id]": "13229975",
+            "contacts[update][0][group_id]": "0",
+            "contacts[update][0][date_create]": "1752606467",
+            "contacts[update][0][last_modified]": "1763143786",
+            "contacts[update][0][created_user_id]": "0",
+            "contacts[update][0][modified_user_id]": "13346787",
+            "contacts[update][0][linked_company_id]": "0",
+            "contacts[update][0][account_id]": "34624807",
+            "contacts[update][0][custom_fields][0][id]": "479324",
+            "contacts[update][0][custom_fields][0][name]": "Phone",
+            "contacts[update][0][custom_fields][0][values][0][value]": "+584146360696",
+            "contacts[update][0][custom_fields][0][values][0][enum]": "403270",
+            "contacts[update][0][custom_fields][0][code]": "PHONE",
+            "contacts[update][0][custom_fields][1][id]": "479326",
+            "contacts[update][0][custom_fields][1][name]": "Email",
+            "contacts[update][0][custom_fields][1][values][0][value]": "ejemplos@gmail.com",
+            "contacts[update][0][custom_fields][1][values][0][enum]": "403282",
+            "contacts[update][0][custom_fields][1][code]": "EMAIL",
+            "contacts[update][0][linked_leads_id][15021338][ID]": "15021338",
+            "contacts[update][0][created_at]": "1752606467",
+            "contacts[update][0][updated_at]": "1763143786",
+            "contacts[update][0][type]": "contact"
+          },
+          "webhookUrl": "https://primary-production-dc03a.up.railway.app/webhook/21517446-f724-499a-b1ae-6ada9fdd726f",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_backups",
+  "repo_owner": "APVMotors",
+  "repo_path": "n8n",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-14T18:08:08.086Z",
+      "createdAt": "2025-11-14T18:08:08.086Z",
+      "role": "workflow:owner",
+      "workflowId": "A1zghZ4kcrsyyamN",
+      "projectId": "b2lVB0vkIPboFk2w"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-11-14T18:10:29.512Z",
+  "versionId": "68a569be-167b-41a2-8e94-509d295b48dc"
+}
