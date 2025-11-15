@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "n8n": {
       "main": [
@@ -64,8 +64,6 @@
   "nodes": [
     {
       "parameters": {
-        "returnAll": false,
-        "limit": 1,
         "filters": {},
         "requestOptions": {}
       },
@@ -153,7 +151,10 @@
   "repo_owner": "APVMotors",
   "repo_path": "n8n",
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "IynjMlXO2S8zalog"
   },
   "shared": [
     {
@@ -164,9 +165,13 @@
       "projectId": "b2lVB0vkIPboFk2w"
     }
   ],
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-11-13T17:41:52.895Z",
-  "versionId": "a7559af9-e6bf-40a3-8902-f013842f1ce2"
+  "triggerCount": 1,
+  "updatedAt": "2025-11-14T14:53:06.872Z",
+  "versionId": "100308d3-8ea0-4bb1-8d52-b03e4bdbb203"
 }
