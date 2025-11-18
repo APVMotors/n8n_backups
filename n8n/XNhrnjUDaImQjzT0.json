@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Crear bearer1",
             "type": "main",
             "index": 0
           }
@@ -162,6 +162,56 @@
           }
         ]
       ]
+    },
+    "Crear bearer": {
+      "main": [
+        [
+          {
+            "node": "extra info de lista",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert row": {
+      "main": [
+        []
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Extraer correos en sendpulse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear bearer1": {
+      "main": [
+        [
+          {
+            "node": "Extraer correos en sendpulse1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer correos en sendpulse1": {
+      "main": [
+        [
+          {
+            "node": "Insert row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-11-14T18:08:53.901Z",
@@ -179,8 +229,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        0,
-        0
+        80,
+        928
       ],
       "id": "97d799c6-c122-4101-a7b7-1d9dd24e3809",
       "name": "When Executed by Another Workflow"
@@ -422,7 +472,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2224,
+        2320,
         0
       ],
       "id": "86445ce6-371d-4eed-bff9-a10d0106471b",
@@ -452,7 +502,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1,
       "position": [
-        2480,
+        2576,
         128
       ],
       "id": "3250587c-3b4c-4c4e-a51e-b48472599bec",
@@ -487,7 +537,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2688,
+        2784,
         128
       ],
       "id": "460d991f-6d01-4bcb-84ce-be2638c12a05",
@@ -530,11 +580,216 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1,
       "position": [
-        2896,
+        2992,
         224
       ],
       "id": "72dde68a-9206-4906-8d0d-8aca00559569",
       "name": "Insert row"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"grant_type\":\"client_credentials\",\n   \"client_id\":\"01de80344731d7b62e61e0160925639b\",\n   \"client_secret\":\"12f47668a9c74cb2ab7d7d18c9585d61\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        368
+      ],
+      "id": "48d82258-a33a-487f-9620-d5be2f2b843d",
+      "name": "Crear bearer",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "url": "https://api.sendpulse.com/addressbooks/472435/emails?limit=100",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          },
+          "pagination": {
+            "pagination": {
+              "parameters": {
+                "parameters": [
+                  {
+                    "name": "offset"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1232,
+        464
+      ],
+      "id": "3463c3f7-f07b-420e-94af-589952404883",
+      "name": "Extraer correos en sendpulse",
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        832,
+        672
+      ],
+      "id": "d551d304-8f17-43d4-a7f7-f158ada85549",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "url": "https://api.sendpulse.com/addressbooks/472435",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        672,
+        368
+      ],
+      "id": "bea846e8-1e97-4505-a435-c3fb616096bd",
+      "name": "extra info de lista",
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"grant_type\":\"client_credentials\",\n   \"client_id\":\"01de80344731d7b62e61e0160925639b\",\n   \"client_secret\":\"12f47668a9c74cb2ab7d7d18c9585d61\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        288,
+        928
+      ],
+      "id": "23ac09c2-7c62-4314-9bfd-b70a212e77eb",
+      "name": "Crear bearer1",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "url": "https://api.sendpulse.com/addressbooks/472435/emails?limit=100",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "parameters": {
+                "parameters": [
+                  {
+                    "name": "offset",
+                    "value": "={{ $pageCount }}"
+                  }
+                ]
+              },
+              "limitPagesFetched": true,
+              "maxRequests": 566
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        512,
+        928
+      ],
+      "id": "2a83de72-80b9-4840-8148-7fc9f54d602f",
+      "name": "Extraer correos en sendpulse1",
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "cqu5E3HSh9L9WReL",
+          "mode": "list",
+          "cachedResultName": "Correos APV motors",
+          "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/cqu5E3HSh9L9WReL"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "correo": "={{ $json.email }}"
+          },
+          "matchingColumns": [
+            "correo"
+          ],
+          "schema": [
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        832,
+        912
+      ],
+      "id": "f29deead-a64a-4f02-8a61-ab5f0e65b0a0",
+      "name": "Insert row1"
     }
   ],
   "pinData": {
@@ -611,6 +866,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-15T00:47:01.714Z",
-  "versionId": "884836e1-0cbe-4f05-ad21-d1e384a9dce1"
+  "updatedAt": "2025-11-17T19:44:00.170Z",
+  "versionId": "db28280d-b71a-4f90-9057-b3bcd7a75e27"
 }
