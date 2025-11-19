@@ -11,7 +11,7 @@
   "id": "A1zghZ4kcrsyyamN",
   "isArchived": false,
   "meta": null,
-  "name": "Actualizacion de contacto",
+  "name": "Trigger actualizacion de contacto",
   "nodes": [
     {
       "parameters": {
@@ -132,6 +132,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-14T18:10:29.512Z",
-  "versionId": "68a569be-167b-41a2-8e94-509d295b48dc"
+  "updatedAt": "2025-11-18T22:23:39.944Z",
+  "versionId": "626aa4ca-54fb-44d5-b5d9-40147595eeba"
 }
