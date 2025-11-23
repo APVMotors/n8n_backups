@@ -1595,7 +1595,9 @@
     },
     {
       "parameters": {
-        "url": "=https://api.millionverifier.com/api/v3/?api=yiV3uuNs14ygSmuGZnhPmzXLH&email={{ $('Loop Over Items2').item.json.correos_de_contacto }}&timeout=30",
+        "url": "=https://api.usebouncer.com/v1.1/email/verify?email={{ $('Loop Over Items2').item.json.correos_de_contacto }}&timeout=30",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1605,7 +1607,13 @@
         320
       ],
       "id": "d1d6f588-0b14-45c6-a74b-66eb2be6a5f8",
-      "name": "verificar correo"
+      "name": "verificar correo",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KTwbvt1dvyVmwNAr",
+          "name": "bounce-apv-motor-1"
+        }
+      }
     },
     {
       "parameters": {
@@ -58388,6 +58396,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-18T23:18:43.829Z",
-  "versionId": "074d86e7-440f-48e8-9205-d8a0f07c5add"
+  "updatedAt": "2025-11-22T22:21:49.688Z",
+  "versionId": "0a0e145c-0a36-42da-8488-919b6c28228e"
 }
