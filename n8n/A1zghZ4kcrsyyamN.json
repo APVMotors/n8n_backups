@@ -3,7 +3,13 @@
   "connections": {
     "Webhook": {
       "main": [
-        []
+        [
+          {
+            "node": "Agregar correo a sendpulse",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -51,7 +57,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        304,
+        224,
         0
       ],
       "id": "98ce0aec-2fcc-4a3b-8be6-fb347aa3040c",
@@ -118,7 +124,10 @@
   "repo_owner": "APVMotors",
   "repo_path": "n8n",
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "IynjMlXO2S8zalog"
   },
   "shared": [
     {
@@ -132,6 +141,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-18T22:23:39.944Z",
-  "versionId": "626aa4ca-54fb-44d5-b5d9-40147595eeba"
+  "updatedAt": "2025-11-24T17:34:42.070Z",
+  "versionId": "d35df838-e5e0-46a4-991b-7488795e0225"
 }
