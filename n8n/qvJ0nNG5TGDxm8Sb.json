@@ -1,0 +1,1129 @@
+{
+  "active": true,
+  "connections": {
+    "Crear bearer1": {
+      "main": [
+        [
+          {
+            "node": "Extraer correos en sendpulse1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Crear bearer1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer correos en sendpulse1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Get row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Crear bearer1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)": {
+      "main": [
+        [
+          {
+            "node": "existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verificar correo": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)": {
+      "main": [
+        [
+          {
+            "node": "es bueno?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "existe ejecucion en ese correo": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "id_registro_correo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Borrar correo de lista": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "es bueno?": {
+      "main": [
+        [
+          {
+            "node": "existe ejecucion en ese correo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Borrar correo de lista",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "existe?": {
+      "main": [
+        [
+          {
+            "node": "existe ejecucion en ese correo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Insert row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert row1": {
+      "main": [
+        [
+          {
+            "node": "id_registro_correo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "id_registro_correo": {
+      "main": [
+        [
+          {
+            "node": "id_registro_final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "id_registro_correo1": {
+      "main": [
+        [
+          {
+            "node": "id_registro_final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "id_registro_final": {
+      "main": [
+        [
+          {
+            "node": "verificar correo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Borrar correo de lista1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)1": {
+      "main": [
+        []
+      ]
+    },
+    "Borrar correo de lista1": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get row(s)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear bearer": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-24T16:46:43.447Z",
+  "id": "qvJ0nNG5TGDxm8Sb",
+  "isArchived": false,
+  "meta": null,
+  "name": "pruebas 2",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"grant_type\":\"client_credentials\",\n   \"client_id\":\"01de80344731d7b62e61e0160925639b\",\n   \"client_secret\":\"12f47668a9c74cb2ab7d7d18c9585d61\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        -48
+      ],
+      "id": "2d232291-a9d6-49cd-bdb7-e64eddad75b6",
+      "name": "Crear bearer1",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "url": "https://api.sendpulse.com/addressbooks/472435/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "parameters": {
+                "parameters": [
+                  {
+                    "name": "offset",
+                    "value": "={{ $pageCount * 100 }}"
+                  },
+                  {
+                    "name": "limit",
+                    "value": "100"
+                  }
+                ]
+              },
+              "limitPagesFetched": true,
+              "maxRequests": 80
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        288,
+        -48
+      ],
+      "id": "c66d2ce4-9d57-40f1-8892-6ead4f4f901c",
+      "name": "Extraer correos en sendpulse1",
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        -192
+      ],
+      "id": "920a7c68-e053-42db-964d-3e11d7f752c5",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        640,
+        -64
+      ],
+      "id": "8fdccfe4-0628-493a-96e6-676cbf38272c",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "31947247-a4da-4a63-a3d4-aa82748d201d",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -208,
+        80
+      ],
+      "id": "d0f0af43-14ec-48d4-baff-ba74dd8a69d3",
+      "name": "Webhook",
+      "webhookId": "31947247-a4da-4a63-a3d4-aa82748d201d"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "U1ZG5sdazb748RwB",
+          "mode": "list",
+          "cachedResultName": "Correos APV motors",
+          "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "correo",
+              "keyValue": "={{ $json.email }}"
+            }
+          ]
+        },
+        "limit": 1
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        928,
+        32
+      ],
+      "id": "92d9d6fe-7599-4ece-895e-5ffc02949267",
+      "name": "Get row(s)",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b7dbdf3f-75b7-46cb-8822-934b789696c5",
+              "leftValue": "={{ $json.id_ejecucion }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "a6e111ff-0cf0-425f-8a24-8eaab8ec957c",
+              "leftValue": "={{ $json.id_ejecucion }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1568,
+        -16
+      ],
+      "id": "4a082ddf-de37-42ee-a3e1-7af0cccf2ffc",
+      "name": "existe ejecucion en ese correo"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.usebouncer.com/v1.1/email/verify?email={{ $('Loop Over Items').item.json.email }}&timeout=20",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2688,
+        160
+      ],
+      "id": "27d88888-1098-4aa4-8003-c2dac9aad965",
+      "name": "verificar correo",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KTwbvt1dvyVmwNAr",
+          "name": "bounce-apv-motor-1"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "U1ZG5sdazb748RwB",
+          "mode": "list",
+          "cachedResultName": "Correos APV motors",
+          "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('id_registro_final').item.json.id_registro_correo }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "estado_correo": "={{ $('verificar correo').item.json.status }}",
+            "razon_estado": "={{ $('verificar correo').item.json.reason }}",
+            "id_ejecucion": "={{ $execution.id }}",
+            "id_lead_kommo": 0,
+            "url_de_ejecucion": "=https://primary-production-dc03a.up.railway.app/workflow/qvJ0nNG5TGDxm8Sb/executions/{{ $execution.id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_ejecucion",
+              "displayName": "id_ejecucion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "url_de_ejecucion",
+              "displayName": "url_de_ejecucion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_contacto_kommo",
+              "displayName": "id_contacto_kommo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "id_lead_kommo",
+              "displayName": "id_lead_kommo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "estado_correo",
+              "displayName": "estado_correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "razon_estado",
+              "displayName": "razon_estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        2912,
+        160
+      ],
+      "id": "9620587c-ea7e-4921-8b13-6b8eed2d0e66",
+      "name": "Update row(s)"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://api.sendpulse.com/addressbooks/472435/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Crear bearer1').item.json.access_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"emails\": [\"{{ $('Loop Over Items').item.json.email }}\"]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3392,
+        240
+      ],
+      "id": "7b24abdf-ee8e-45e7-8960-db600f7365cf",
+      "name": "Borrar correo de lista",
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bc42d53c-6219-42ec-ad63-ec2f8c621a74",
+              "leftValue": "={{ $('verificar correo').item.json.status }}",
+              "rightValue": "deliverable",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "ba454424-290d-4b3d-afad-fafec14841b3",
+              "leftValue": "={{ $('verificar correo').item.json.status }}",
+              "rightValue": "risky",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3136,
+        160
+      ],
+      "id": "9987793b-9722-4dda-81c8-28c275a0d3be",
+      "name": "es bueno?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "70799471-5d91-404c-96e2-935b1acf258c",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1136,
+        32
+      ],
+      "id": "353256af-5361-4f69-98ac-eda139f6f8c6",
+      "name": "existe?"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "U1ZG5sdazb748RwB",
+          "mode": "list",
+          "cachedResultName": "Correos APV motors",
+          "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "correo": "={{ $('Loop Over Items').item.json.email }}",
+            "id_ejecucion": 0,
+            "id_contacto_kommo": 0,
+            "id_lead_kommo": 0
+          },
+          "matchingColumns": [
+            "correo"
+          ],
+          "schema": [
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_ejecucion",
+              "displayName": "id_ejecucion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "url_de_ejecucion",
+              "displayName": "url_de_ejecucion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_contacto_kommo",
+              "displayName": "id_contacto_kommo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_lead_kommo",
+              "displayName": "id_lead_kommo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "estado_correo",
+              "displayName": "estado_correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "razon_estado",
+              "displayName": "razon_estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        1776,
+        176
+      ],
+      "id": "be846289-1082-4e1a-ad94-a5ef420da6f4",
+      "name": "Insert row1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e5db02c7-cdb0-40b6-a8f7-30b5ba4d4a6f",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2048,
+        -80
+      ],
+      "id": "470f03cc-63d2-4904-a4af-b02dc476bf23",
+      "name": "id_registro_correo"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e5db02c7-cdb0-40b6-a8f7-30b5ba4d4a6f",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2048,
+        176
+      ],
+      "id": "d3eeaa07-7b66-432c-a831-c0fbfe6749f6",
+      "name": "id_registro_correo1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "106e17cf-2d9e-4125-8c7b-a79f913689a5",
+              "name": "id_registro_correo",
+              "value": "={{ $json.id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2336,
+        160
+      ],
+      "id": "43500d21-8f5d-4637-9951-4fd00ce1400a",
+      "name": "id_registro_final"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "U1ZG5sdazb748RwB",
+          "mode": "list",
+          "cachedResultName": "Correos APV motors",
+          "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "estado_correo",
+              "keyValue": "=undeliverable"
+            },
+            {
+              "keyName": "estado_correo",
+              "keyValue": "unknown"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        560,
+        640
+      ],
+      "id": "b2a00779-c7ef-47b9-9e5d-d3fd2643605f",
+      "name": "Get row(s)1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "U1ZG5sdazb748RwB",
+          "mode": "list",
+          "cachedResultName": "Correos APV motors",
+          "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id_ejecucion": "={{ 0 }}",
+            "id_contacto_kommo": 0,
+            "id_lead_kommo": 0
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_ejecucion",
+              "displayName": "id_ejecucion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "url_de_ejecucion",
+              "displayName": "url_de_ejecucion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_contacto_kommo",
+              "displayName": "id_contacto_kommo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_lead_kommo",
+              "displayName": "id_lead_kommo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "estado_correo",
+              "displayName": "estado_correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "razon_estado",
+              "displayName": "razon_estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        1056
+      ],
+      "id": "0e5a42be-c010-4a4c-9a2d-91322cf1242d",
+      "name": "Update row(s)1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        784,
+        640
+      ],
+      "id": "ca7bd4d8-c774-424c-aaaa-a8adb0264287",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://api.sendpulse.com/addressbooks/472435/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Crear bearer').item.json.access_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"emails\": [\"{{ $json.correo }}\"]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1088,
+        704
+      ],
+      "id": "116156af-22a7-4c5e-b0ad-3b625d86f653",
+      "name": "Borrar correo de lista1",
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"grant_type\":\"client_credentials\",\n   \"client_id\":\"01de80344731d7b62e61e0160925639b\",\n   \"client_secret\":\"12f47668a9c74cb2ab7d7d18c9585d61\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        640
+      ],
+      "id": "81ea2b94-7249-4036-a066-6bb03568fbd9",
+      "name": "Crear bearer",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "primary-production-dc03a.up.railway.app",
+            "user-agent": "PostmanRuntime/7.50.0",
+            "content-length": "0",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br",
+            "cache-control": "no-cache",
+            "postman-token": "36ced147-2859-47d7-9d80-c13157326852",
+            "x-forwarded-for": "54.86.50.139",
+            "x-forwarded-host": "primary-production-dc03a.up.railway.app",
+            "x-forwarded-proto": "https",
+            "x-railway-edge": "railway/us-east4-eqdc4a",
+            "x-railway-request-id": "cjdWWSlLSGCTSpoXezItjw",
+            "x-real-ip": "54.86.50.139",
+            "x-request-start": "1764005665328"
+          },
+          "params": {},
+          "query": {},
+          "body": {},
+          "webhookUrl": "https://primary-production-dc03a.up.railway.app/webhook/31947247-a4da-4a63-a3d4-aa82748d201d",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_backups",
+  "repo_owner": "APVMotors",
+  "repo_path": "n8n",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "IynjMlXO2S8zalog"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-24T16:46:43.447Z",
+      "createdAt": "2025-11-24T16:46:43.447Z",
+      "role": "workflow:owner",
+      "workflowId": "qvJ0nNG5TGDxm8Sb",
+      "projectId": "b2lVB0vkIPboFk2w"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-11-24T18:06:59.770Z",
+  "versionId": "e6c22350-747f-4b06-86a0-b722dacdeca3"
+}
