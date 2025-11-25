@@ -529,7 +529,7 @@
           "conditions": [
             {
               "id": "f54dd680-3169-491d-8fea-339f16f77aa5",
-              "leftValue": "={{ $('Variables iniciales1').item.json.mensaje_inicial}}a@gd.ci",
+              "leftValue": "={{ $('Variables iniciales1').item.json.mensaje_inicial}}",
               "rightValue": "\\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\\b",
               "operator": {
                 "type": "string",
@@ -562,11 +562,14 @@
       "type": "n8n-nodes-kommo.kommo",
       "typeVersion": 1,
       "position": [
-        1760,
+        1776,
         16
       ],
       "id": "f1ae6647-254f-42c7-b6b6-ee37bcd34bd2",
       "name": "obtener contacto",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "kommoOAuth2Api": {
           "id": "y2KeFBJwvTPMiZYT",
@@ -591,7 +594,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1968,
+        1984,
         16
       ],
       "id": "716a7e28-8083-4de6-8926-f56bd375856f",
@@ -625,7 +628,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2176,
+        2192,
         16
       ],
       "id": "b658a17c-1ea0-4a51-bd3f-7c67ce578dbb",
@@ -648,7 +651,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2464,
+        2480,
         112
       ],
       "id": "55a49e55-ce61-40a9-9cc0-f9e1585ffb41",
@@ -662,7 +665,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2672,
+        2688,
         112
       ],
       "id": "96122a46-c8c9-46f9-bb5d-f4fdbb925be9",
@@ -691,7 +694,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2880,
+        2896,
         112
       ],
       "id": "6701ca11-3dc1-450e-85c4-19ae5a75c8f5",
@@ -706,7 +709,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3088,
+        3104,
         112
       ],
       "id": "42ddeebd-ef23-448a-b39f-a62c5dfa278a",
@@ -720,7 +723,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2672,
+        2688,
         -272
       ],
       "id": "6d35ab62-ac85-488c-8ac5-f9224937d672",
@@ -743,7 +746,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2464,
+        2480,
         -272
       ],
       "id": "f8d6fe32-6bc5-4c1f-b4bb-db874b963ff9",
@@ -766,7 +769,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2880,
+        2896,
         -272
       ],
       "id": "06c5111e-bda4-40a8-a734-39bece9b44d1",
@@ -788,7 +791,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3088,
+        3104,
         -272
       ],
       "id": "5734fc38-64ee-48e0-a6d3-12dfc9aa1db8",
@@ -811,7 +814,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3296,
+        3312,
         -272
       ],
       "id": "7bf1df30-17b6-43c1-bbd8-eac9616022cd",
@@ -825,7 +828,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        3488,
+        3504,
         -272
       ],
       "id": "d18bb0d6-78bb-4d38-b66a-aae9c73e34a7",
@@ -859,7 +862,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        3696,
+        3712,
         -272
       ],
       "id": "4cf05bb7-8570-41da-9788-84f2878e31e3",
@@ -888,7 +891,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3936,
+        3952,
         -272
       ],
       "id": "d4dc16bb-586c-4625-83f3-45516e4568f6",
@@ -903,7 +906,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        4192,
+        4208,
         -272
       ],
       "id": "b5ef49ea-402a-4204-adfb-0fcb93c10976",
@@ -919,7 +922,7 @@
       "type": "n8n-nodes-kommo.kommo",
       "typeVersion": 1,
       "position": [
-        4416,
+        4432,
         -272
       ],
       "id": "c0179af1-8e60-4033-8ecd-e472654b17ff",
@@ -941,7 +944,7 @@
       "type": "n8n-nodes-kommo.kommo",
       "typeVersion": 1,
       "position": [
-        3312,
+        3328,
         112
       ],
       "id": "aba83379-91ad-456c-a3c5-e509f6ba32df",
@@ -974,38 +977,41 @@
           "headers": {
             "host": "primary-production-dc03a.up.railway.app",
             "user-agent": "amoCRM-Webhooks/3.0",
-            "content-length": "958",
+            "content-length": "1224",
             "accept-encoding": "gzip",
             "content-type": "application/x-www-form-urlencoded",
-            "x-amocrm-requestid": "fa2e7ddc-2d7d-4892-bf36-fa6e1f2e8c81",
+            "x-amocrm-requestid": "45fb121d-df34-4f1a-b94f-1b261970a22d",
             "x-forwarded-for": "204.74.253.164",
             "x-forwarded-host": "primary-production-dc03a.up.railway.app",
             "x-forwarded-proto": "https",
             "x-railway-edge": "railway/us-east4-eqdc4a",
-            "x-railway-request-id": "BA4hOai0RR63qEiTAax-fw",
+            "x-railway-request-id": "MZiZlM-LRBCn9xxpPvyhXg",
             "x-real-ip": "204.74.253.164",
-            "x-request-start": "1763046634552"
+            "x-request-start": "1764000236687"
           },
           "params": {},
           "query": {},
           "body": {
             "account[subdomain]": "apvmotorusa",
-            "account[id]": "15746002",
+            "account[id]": "34624807",
             "account[_links][self]": "https://apvmotorusa.amocrm.com",
-            "message[add][0][id]": "6bc2c8c1-2152-4b13-b48b-e52738533fc8",
-            "message[add][0][chat_id]": "39e38188-023c-46af-a1f5-56096624afed",
-            "message[add][0][talk_id]": "2521",
-            "message[add][0][contact_id]": "23470102",
-            "message[add][0][text]": "Más tarde te consigno para la Subasta del\nLunes",
-            "message[add][0][created_at]": "1763046633",
+            "message[add][0][id]": "bf2dbd5d-e85f-4f59-b7ff-656384b73885",
+            "message[add][0][chat_id]": "b06b3f67-4125-4f25-9695-67aae8d0832c",
+            "message[add][0][talk_id]": "929",
+            "message[add][0][contact_id]": "22412254",
+            "message[add][0][text]": "",
+            "message[add][0][created_at]": "1764000211",
+            "message[add][0][attachment][type]": "picture",
+            "message[add][0][attachment][link]": "https://amojo.kommo.com/v2/4b0ac101-37fc-423c-9076-87df8b768f47/attachments/af527d97-3ede-4742-b82b-57868a126950/file.jpeg",
+            "message[add][0][attachment][file_name]": "file.jpeg",
             "message[add][0][element_type]": "2",
             "message[add][0][entity_type]": "lead",
-            "message[add][0][element_id]": "15320894",
-            "message[add][0][entity_id]": "15320894",
+            "message[add][0][element_id]": "14778996",
+            "message[add][0][entity_id]": "14778996",
             "message[add][0][type]": "incoming",
-            "message[add][0][author][id]": "917fbb84-d624-4ef7-bedd-3caa8907aace",
+            "message[add][0][author][id]": "37b0b0ae-5e87-4fcd-b427-24c725de376f",
             "message[add][0][author][type]": "external",
-            "message[add][0][author][name]": "Jhon",
+            "message[add][0][author][name]": "Jesus palacio",
             "message[add][0][origin]": "waba"
           },
           "webhookUrl": "https://primary-production-dc03a.up.railway.app/webhook/58a945a2-b1bb-4c41-a98e-dae060d622e3",
@@ -1035,6 +1041,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-14T00:46:12.768Z",
-  "versionId": "da3f7560-dbb3-4e51-a6fd-d08791253244"
+  "updatedAt": "2025-11-24T17:43:32.475Z",
+  "versionId": "5414d175-fcb1-40bf-b93b-29e912c7d1f6"
 }
