@@ -1,0 +1,45 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-11-25T21:10:21.261Z",
+  "id": "8mH0i34mp6JPQ08T",
+  "isArchived": false,
+  "meta": null,
+  "name": "Enviar felicitaciones de cumpleaños",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b452006e-9e18-4be8-aebf-e588f4c766c9",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_backups",
+  "repo_owner": "APVMotors",
+  "repo_path": "n8n",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-25T21:10:21.261Z",
+      "createdAt": "2025-11-25T21:10:21.261Z",
+      "role": "workflow:owner",
+      "workflowId": "8mH0i34mp6JPQ08T",
+      "projectId": "b2lVB0vkIPboFk2w"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-25T21:10:52.523Z",
+  "versionId": "6565af1b-499d-4127-b14d-ebea3e2a22a9"
+}
