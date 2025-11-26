@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Crear bearer1": {
       "main": [
@@ -1124,6 +1124,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-24T18:06:59.770Z",
+  "updatedAt": "2025-11-25T20:26:23.061Z",
   "versionId": "e6c22350-747f-4b06-86a0-b722dacdeca3"
 }
