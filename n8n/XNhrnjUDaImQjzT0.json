@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -176,13 +178,7 @@
     },
     "Agregar correo1": {
       "main": [
-        [
-          {
-            "node": "Loop Over Items2",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "verificar correo": {
@@ -200,7 +196,7 @@
       "main": [
         [
           {
-            "node": "Crear bearer4",
+            "node": "Loop Over Items2",
             "type": "main",
             "index": 0
           }
@@ -267,6 +263,11 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Crear bearer": {
+      "main": [
+        []
       ]
     }
   },
@@ -680,7 +681,8 @@
       "name": "Crear bearer4",
       "retryOnFail": true,
       "maxTries": 5,
-      "waitBetweenTries": 5000
+      "waitBetweenTries": 5000,
+      "executeOnce": false
     },
     {
       "parameters": {
@@ -708,7 +710,9 @@
       ],
       "id": "604df9c3-aba6-483e-a662-2f01f248475f",
       "name": "Agregar correo1",
-      "retryOnFail": false
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
     },
     {
       "parameters": {
@@ -809,7 +813,11 @@
           "mappingMode": "defineBelow",
           "value": {
             "estado_correo": "={{ $('verificar correo').item.json.status }}",
-            "razon_estado": "={{ $('verificar correo').item.json.reason }}"
+            "razon_estado": "={{ $('verificar correo').item.json.reason }}",
+            "id_ejecucion": 0,
+            "id_contacto_kommo": 0,
+            "id_lead_kommo": 0,
+            "pasado_sendpulse": false
           },
           "matchingColumns": [],
           "schema": [
@@ -880,6 +888,36 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_evento_cal_com",
+              "displayName": "id_evento_cal_com",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id_agendamiento_cal_com",
+              "displayName": "id_agendamiento_cal_com",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pasado_sendpulse",
+              "displayName": "pasado_sendpulse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
               "readOnly": false,
               "removed": false
             }
@@ -985,6 +1023,55 @@
       ],
       "id": "11aadc43-25b6-46f2-8948-e486675e5756",
       "name": "variables_2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/addressbooks/472435/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImViNTFjNWIzYjRkYTUyMDNiZTQzYTA3NzhjZDljNjlmMjJjMmFhNWZiYTcyY2I0NGY3NTEzNmFhZGJlOTRlY2EyNjczZDJhMjc4MzY3ZjMwIn0.eyJhdWQiOiIwMWRlODAzNDQ3MzFkN2I2MmU2MWUwMTYwOTI1NjM5YiIsImp0aSI6ImViNTFjNWIzYjRkYTUyMDNiZTQzYTA3NzhjZDljNjlmMjJjMmFhNWZiYTcyY2I0NGY3NTEzNmFhZGJlOTRlY2EyNjczZDJhMjc4MzY3ZjMwIiwiaWF0IjoxNzY0Nzc2ODA5LCJuYmYiOjE3NjQ3NzY4MDksImV4cCI6MTc2NDc4MDQwOSwic3ViIjoiIiwic2NvcGVzIjpbXSwidXNlciI6eyJpZCI6OTI3MjE3NywiZ3JvdXBfaWQiOm51bGwsInBhcmVudF9pZCI6bnVsbCwiY29udGV4dCI6eyJhY2NsaW0iOiIwIn0sImFyZWEiOiJyZXN0IiwiYXBwX2lkIjpudWxsfX0.T-2il1xgGfaOsXoSW2oApLYi5qJNInKI0SKiIjTEc0R4heJ7Abw5TkF-mcNH6MIb0nf27jZgfdRizSww7Kd6jz8TO0IpUPL7cE-SntHl5ec78XpzbNC_naQ9ib0N3FNNZ5AAeXh8LC5q2H1B36xtNGbO9bIjtOpdn66T-RGCxPnNEKbkKiC4HMo9yf3yh1VRTWt-uW3NcN_66BkzYExsaOZXk1bkUCIGxOYx3h-gSUiRSXqwiFDugCW9kY4G4lc5kr5uotr-ExUz-LA60iFV_lDa0uaupdxeKPyzHQr3JJmwrx8YZsFXZIBcLmYqOXcF1G-uKU9jYNWhH4Rza1gnnQ"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"emails\":[\"marinaestelap97@gmail.com\"]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4944,
+        496
+      ],
+      "id": "a054210e-a573-4523-be41-9f5a73d739e0",
+      "name": "Agregar correo",
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"grant_type\":\"client_credentials\",\n   \"client_id\":\"01de80344731d7b62e61e0160925639b\",\n   \"client_secret\":\"12f47668a9c74cb2ab7d7d18c9585d61\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4704,
+        512
+      ],
+      "id": "122474c7-f0cd-4abb-b669-4dc3a1824ac0",
+      "name": "Crear bearer",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
     }
   ],
   "pinData": {
@@ -994,17 +1081,17 @@
           "headers": {
             "host": "primary-production-dc03a.up.railway.app",
             "user-agent": "amoCRM-Webhooks/3.0",
-            "content-length": "1949",
+            "content-length": "1646",
             "accept-encoding": "gzip",
             "content-type": "application/x-www-form-urlencoded",
-            "x-amocrm-requestid": "bc4bfc83-bb28-4fb5-989e-a284c19efa1b",
+            "x-amocrm-requestid": "702d2bda-f186-4f3c-ba7f-1cf07e162e01",
             "x-forwarded-for": "204.74.253.164",
             "x-forwarded-host": "primary-production-dc03a.up.railway.app",
             "x-forwarded-proto": "https",
             "x-railway-edge": "railway/us-east4-eqdc4a",
-            "x-railway-request-id": "89Uu9q5UTkGqYKilCx5-qw",
+            "x-railway-request-id": "pUKc3nlkTqOxkZ9RezItjw",
             "x-real-ip": "204.74.253.164",
-            "x-request-start": "1764098644028"
+            "x-request-start": "1764779217222"
           },
           "params": {},
           "query": {},
@@ -1012,104 +1099,32 @@
             "account[subdomain]": "apvmotorusa",
             "account[id]": "34624807",
             "account[_links][self]": "https://apvmotorusa.amocrm.com",
-            "contacts[update][0][id]": "22916880",
-            "contacts[update][0][name]": "Gianmarco Rusher",
-            "contacts[update][0][responsible_user_id]": "13346787",
+            "contacts[update][0][id]": "24285580",
+            "contacts[update][0][name]": "Estela Portillo",
+            "contacts[update][0][responsible_user_id]": "13229975",
             "contacts[update][0][group_id]": "0",
-            "contacts[update][0][date_create]": "1761585987",
-            "contacts[update][0][last_modified]": "1764098643",
+            "contacts[update][0][date_create]": "1764779073",
+            "contacts[update][0][last_modified]": "1764779217",
             "contacts[update][0][created_user_id]": "0",
             "contacts[update][0][modified_user_id]": "0",
-            "contacts[update][0][linked_company_id]": "0",
             "contacts[update][0][account_id]": "34624807",
             "contacts[update][0][custom_fields][0][id]": "479324",
             "contacts[update][0][custom_fields][0][name]": "Phone",
-            "contacts[update][0][custom_fields][0][values][0][value]": "+51936639242",
+            "contacts[update][0][custom_fields][0][values][0][value]": "+50370609465",
             "contacts[update][0][custom_fields][0][values][0][enum]": "403270",
             "contacts[update][0][custom_fields][0][code]": "PHONE",
             "contacts[update][0][custom_fields][1][id]": "479326",
             "contacts[update][0][custom_fields][1][name]": "Email",
-            "contacts[update][0][custom_fields][1][values][0][value]": "gianmarcorusher@gmail.com",
+            "contacts[update][0][custom_fields][1][values][0][value]": "marinaestelap97@gmail.com",
             "contacts[update][0][custom_fields][1][values][0][enum]": "403282",
             "contacts[update][0][custom_fields][1][code]": "EMAIL",
-            "contacts[update][0][custom_fields][2][id]": "1114489",
-            "contacts[update][0][custom_fields][2][name]": "Cumpleaños",
-            "contacts[update][0][custom_fields][2][values][0][value]": "11/25/2025",
-            "contacts[update][0][linked_leads_id][15207964][ID]": "15207964",
-            "contacts[update][0][created_at]": "1761585987",
-            "contacts[update][0][updated_at]": "1764098643",
+            "contacts[update][0][linked_leads_id][16488126][ID]": "16488126",
+            "contacts[update][0][created_at]": "1764779073",
+            "contacts[update][0][updated_at]": "1764779217",
             "contacts[update][0][type]": "contact"
           },
           "webhookUrl": "https://primary-production-dc03a.up.railway.app/webhook/21517446-f724-499a-b1ae-6ada9fdd726f",
           "executionMode": "production"
-        }
-      }
-    ],
-    "Get row(s)1": [
-      {
-        "json": {}
-      }
-    ],
-    "Insert row2": [
-      {
-        "json": {
-          "correo": "gianmarcorusher@gmail.com",
-          "id_ejecucion": 29704,
-          "url_de_ejecucion": "https://primary-production-dc03a.up.railway.app/workflow/XNhrnjUDaImQjzT0/executions/29704",
-          "id_contacto_kommo": 22916880,
-          "id_lead_kommo": 15207964,
-          "estado_correo": null,
-          "razon_estado": null,
-          "id": 6358,
-          "createdAt": "2025-11-25T20:19:23.070Z",
-          "updatedAt": "2025-11-25T20:19:23.070Z"
-        }
-      }
-    ],
-    "verificar correo": [
-      {
-        "json": {
-          "email": "gianmarcorusher@gmail.com",
-          "status": "deliverable",
-          "reason": "accepted_email",
-          "domain": {
-            "name": "gmail.com",
-            "acceptAll": "no",
-            "disposable": "no",
-            "free": "yes"
-          },
-          "account": {
-            "role": "no",
-            "disabled": "no",
-            "fullMailbox": "no"
-          },
-          "dns": {
-            "type": "MX",
-            "record": "gmail-smtp-in.l.google.com."
-          },
-          "provider": "google.com",
-          "score": 100,
-          "toxic": "no",
-          "toxicity": 0,
-          "catchAll": false,
-          "free": true,
-          "disposable": false
-        }
-      }
-    ],
-    "Update row(s)": [
-      {
-        "json": {
-          "correo": "gianmarcorusher@gmail.com",
-          "id_ejecucion": 29704,
-          "url_de_ejecucion": "https://primary-production-dc03a.up.railway.app/workflow/XNhrnjUDaImQjzT0/executions/29704",
-          "id_contacto_kommo": 22916880,
-          "id_lead_kommo": 15207964,
-          "estado_correo": "deliverable",
-          "razon_estado": "accepted_email",
-          "id": 6358,
-          "createdAt": "2025-11-25T20:19:23.070Z",
-          "updatedAt": "2025-11-25T20:19:24.073Z"
         }
       }
     ]
@@ -1132,6 +1147,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-25T20:22:01.263Z",
-  "versionId": "d15ec067-3cdd-4b93-9937-4b7b2a2b0a56"
+  "updatedAt": "2025-12-03T16:46:35.148Z",
+  "versionId": "234ee22f-4978-471c-8212-31cf747bc585"
 }
