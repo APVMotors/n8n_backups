@@ -1,5 +1,615 @@
 {
   "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-03T16:52:54.106Z",
+    "createdAt": "2025-12-03T16:52:54.106Z",
+    "versionId": "cca27c49-5f6d-4d3d-a978-2a4c842d3c25",
+    "workflowId": "y885kodanKUwVSTs",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "cc350a51-34af-4ebb-9124-df0b63509f56",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -16,
+          0
+        ],
+        "id": "f1a6b4f2-96f5-4bf5-9a88-dbf31bb0e44a",
+        "name": "Webhook",
+        "webhookId": "cc350a51-34af-4ebb-9124-df0b63509f56"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "815908b5-14a4-42d7-b2d5-f08bd3c5e02c",
+                "name": "email_asistente",
+                "value": "={{ $('Webhook').item.json.body.payload.attendees[0].email }}",
+                "type": "string"
+              },
+              {
+                "id": "e98d92ad-d717-494d-b267-1e44fb4b21d3",
+                "name": "celular_asistente",
+                "value": "={{ $('Webhook').item.json.body.payload.attendees[0].phoneNumber }}",
+                "type": "string"
+              },
+              {
+                "id": "4c8c36fe-5467-4533-ada2-48335f29ab9e",
+                "name": "id_evento_cal_com",
+                "value": "={{ $('Webhook').item.json.body.payload.eventTypeId }}",
+                "type": "string"
+              },
+              {
+                "id": "78ddec78-6328-4c93-a32e-b8a26660901c",
+                "name": "uid_evento_cal_com",
+                "value": "={{ $('Webhook').item.json.body.payload.uid }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          192,
+          0
+        ],
+        "id": "1399e76d-ff7d-4084-bc6e-813da6b43c3f",
+        "name": "variables"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "U1ZG5sdazb748RwB",
+            "mode": "list",
+            "cachedResultName": "Correos APV motors",
+            "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "correo",
+                "keyValue": "={{ $('variables').item.json.email_asistente }}"
+              }
+            ]
+          },
+          "limit": 1
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1,
+        "position": [
+          384,
+          0
+        ],
+        "id": "373965c8-e743-4a16-a6e4-d6ee8ce8b21d",
+        "name": "Get row(s)1",
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "value": "U1ZG5sdazb748RwB",
+            "mode": "list",
+            "cachedResultName": "Correos APV motors",
+            "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "correo": "={{ $('variables').item.json.email_asistente }}",
+              "id_ejecucion": "={{ $execution.id }}",
+              "id_contacto_kommo": "=",
+              "id_lead_kommo": "=",
+              "url_de_ejecucion": "=https://primary-production-dc03a.up.railway.app/workflow/y885kodanKUwVSTs/executions/{{ $execution.id }}",
+              "id_evento_cal_com": "={{ $('variables').item.json.id_evento_cal_com }}",
+              "id_agendamiento_cal_com": "={{ $('variables').item.json.uid_evento_cal_com }}"
+            },
+            "matchingColumns": [
+              "correo"
+            ],
+            "schema": [
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_ejecucion",
+                "displayName": "id_ejecucion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "url_de_ejecucion",
+                "displayName": "url_de_ejecucion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_contacto_kommo",
+                "displayName": "id_contacto_kommo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_lead_kommo",
+                "displayName": "id_lead_kommo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "estado_correo",
+                "displayName": "estado_correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "razon_estado",
+                "displayName": "razon_estado",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_evento_cal_com",
+                "displayName": "id_evento_cal_com",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_agendamiento_cal_com",
+                "displayName": "id_agendamiento_cal_com",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1,
+        "position": [
+          800,
+          0
+        ],
+        "id": "26bdc992-6494-4936-97d8-d49881f08bc0",
+        "name": "Insert row2"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.sendpulse.com/oauth/access_token",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n   \"grant_type\":\"client_credentials\",\n   \"client_id\":\"01de80344731d7b62e61e0160925639b\",\n   \"client_secret\":\"12f47668a9c74cb2ab7d7d18c9585d61\"\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1696,
+          0
+        ],
+        "id": "2f5a7c5a-2647-4c41-ad5a-d97f7537c425",
+        "name": "Crear bearer4",
+        "retryOnFail": true,
+        "maxTries": 5,
+        "waitBetweenTries": 5000
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.sendpulse.com/addressbooks/472435/emails",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "=Bearer {{ $json.access_token }}"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n   \"emails\":[\"{{ $('variables').item.json.email_asistente }}\"]\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1920,
+          0
+        ],
+        "id": "92f74e1c-a7da-4247-8007-04bd262305d3",
+        "name": "Agregar correo1",
+        "retryOnFail": false
+      },
+      {
+        "parameters": {
+          "url": "=https://api.usebouncer.com/v1.1/email/verify?email={{ $('variables').item.json.email_asistente }}&timeout=25",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          1008,
+          0
+        ],
+        "id": "db3f10c3-24e2-4251-a5fd-ee84784903b4",
+        "name": "verificar correo",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "KTwbvt1dvyVmwNAr",
+            "name": "bounce-apv-motor-1"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "U1ZG5sdazb748RwB",
+            "mode": "list",
+            "cachedResultName": "Correos APV motors",
+            "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Insert row2').item.json.id }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "estado_correo": "={{ $('verificar correo').item.json.status }}",
+              "razon_estado": "={{ $('verificar correo').item.json.reason }}",
+              "id_ejecucion": 0,
+              "id_contacto_kommo": 0,
+              "id_lead_kommo": 0
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_ejecucion",
+                "displayName": "id_ejecucion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "url_de_ejecucion",
+                "displayName": "url_de_ejecucion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_contacto_kommo",
+                "displayName": "id_contacto_kommo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_lead_kommo",
+                "displayName": "id_lead_kommo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "estado_correo",
+                "displayName": "estado_correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "razon_estado",
+                "displayName": "razon_estado",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_evento_cal_com",
+                "displayName": "id_evento_cal_com",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_agendamiento_cal_com",
+                "displayName": "id_agendamiento_cal_com",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1,
+        "position": [
+          1232,
+          0
+        ],
+        "id": "a46859eb-02e6-435d-b5ff-3c4d6f7696b5",
+        "name": "Update row(s)"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "2e8058fb-c845-4b5a-b76b-c83c45aa4a8f",
+                "leftValue": "={{ $json.id }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "number",
+                  "operation": "notExists",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 2.2,
+        "position": [
+          608,
+          0
+        ],
+        "id": "f3160ac0-4ed9-4889-9e58-1616b02b3bd4",
+        "name": "no existe correo"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "55f557eb-f5d2-4dbe-98b3-abcec881e948",
+                "leftValue": "={{ $('verificar correo').item.json.status }}",
+                "rightValue": "deliverable",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEquals"
+                }
+              },
+              {
+                "id": "538044e5-f44d-4aa8-aa01-0e0facb72c43",
+                "leftValue": "={{ $('verificar correo').item.json.status }}",
+                "rightValue": "risky",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEquals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 2.2,
+        "position": [
+          1472,
+          0
+        ],
+        "id": "13b4d746-119d-411e-91ad-7f0644c24ad2",
+        "name": "es bueno?1"
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "variables",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get row(s)1": {
+        "main": [
+          [
+            {
+              "node": "no existe correo",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Insert row2": {
+        "main": [
+          [
+            {
+              "node": "verificar correo",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Crear bearer4": {
+        "main": [
+          [
+            {
+              "node": "Agregar correo1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "verificar correo": {
+        "main": [
+          [
+            {
+              "node": "Update row(s)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update row(s)": {
+        "main": [
+          [
+            {
+              "node": "es bueno?1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "variables": {
+        "main": [
+          [
+            {
+              "node": "Get row(s)1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "no existe correo": {
+        "main": [
+          [
+            {
+              "node": "Insert row2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "es bueno?1": {
+        "main": [
+          [
+            {
+              "node": "Crear bearer4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "cca27c49-5f6d-4d3d-a978-2a4c842d3c25",
   "connections": {
     "Webhook": {
       "main": [
