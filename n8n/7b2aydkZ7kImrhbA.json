@@ -1,5 +1,132 @@
 {
   "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-03T16:52:54.106Z",
+    "createdAt": "2025-12-03T16:52:54.106Z",
+    "versionId": "b3b37604-9787-415d-a56e-003af72c69f7",
+    "workflowId": "7b2aydkZ7kImrhbA",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "58a945a2-b1bb-4c41-a98e-dae060d622e3",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -272,
+          0
+        ],
+        "id": "a6450070-5871-4bda-817a-4be29b576e05",
+        "name": "Webhook",
+        "webhookId": "58a945a2-b1bb-4c41-a98e-dae060d622e3"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "c8dc2d66-8f42-40d6-aa01-00398a7c12a2",
+                "leftValue": "={{ $json.headers['user-agent'] }}",
+                "rightValue": "amoCRM-Webhooks/3.0",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 2.2,
+        "position": [
+          -48,
+          0
+        ],
+        "id": "19964d73-6e6f-4ece-af41-4494b474b234",
+        "name": "tiene que ser el 3.0"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "F3TNC9oX23A1IP9l",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/F3TNC9oX23A1IP9l",
+            "cachedResultName": "Guardado de correo automatico"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "body": "={{ $('Webhook').item.json.body }}"
+            },
+            "matchingColumns": [
+              "body"
+            ],
+            "schema": [
+              {
+                "id": "body",
+                "displayName": "body",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          224,
+          0
+        ],
+        "name": "Guardado de correo automatico",
+        "id": "d3e9a6be-a9e1-4bea-b25c-22d5883ec966"
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "tiene que ser el 3.0",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "tiene que ser el 3.0": {
+        "main": [
+          [
+            {
+              "node": "Guardado de correo automatico",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "b3b37604-9787-415d-a56e-003af72c69f7",
   "connections": {
     "Webhook": {
       "main": [
