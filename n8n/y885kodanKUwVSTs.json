@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2025-12-03T16:52:54.106Z",
-    "createdAt": "2025-12-03T16:52:54.106Z",
-    "versionId": "cca27c49-5f6d-4d3d-a978-2a4c842d3c25",
+    "updatedAt": "2025-12-15T17:39:12.457Z",
+    "createdAt": "2025-12-15T17:39:12.457Z",
+    "versionId": "000f70d3-a2cc-4fc1-b275-1d5ed1e322fa",
     "workflowId": "y885kodanKUwVSTs",
     "nodes": [
       {
@@ -562,13 +562,7 @@
       },
       "Update row(s)": {
         "main": [
-          [
-            {
-              "node": "es bueno?1",
-              "type": "main",
-              "index": 0
-            }
-          ]
+          []
         ]
       },
       "variables": {
@@ -605,11 +599,11 @@
         ]
       }
     },
-    "authors": "system migration",
+    "authors": "Apv Motors",
     "name": null,
     "description": null
   },
-  "activeVersionId": "cca27c49-5f6d-4d3d-a978-2a4c842d3c25",
+  "activeVersionId": "000f70d3-a2cc-4fc1-b275-1d5ed1e322fa",
   "connections": {
     "Webhook": {
       "main": [
@@ -668,13 +662,7 @@
     },
     "Update row(s)": {
       "main": [
-        [
-          {
-            "node": "es bueno?1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "variables": {
@@ -1450,6 +1438,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-25T20:51:43.097Z",
-  "versionId": "cca27c49-5f6d-4d3d-a978-2a4c842d3c25"
+  "updatedAt": "2025-12-15T17:39:12.496Z",
+  "versionId": "000f70d3-a2cc-4fc1-b275-1d5ed1e322fa"
 }
