@@ -1,7 +1,1081 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-03T16:46:35.171Z",
+    "createdAt": "2025-12-03T16:46:35.171Z",
+    "versionId": "234ee22f-4978-471c-8212-31cf747bc585",
+    "workflowId": "XNhrnjUDaImQjzT0",
+    "nodes": [
+      {
+        "parameters": {
+          "inputSource": "passthrough"
+        },
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          -464,
+          128
+        ],
+        "id": "97d799c6-c122-4101-a7b7-1d9dd24e3809",
+        "name": "When Executed by Another Workflow"
+      },
+      {
+        "parameters": {
+          "resource": "contacts",
+          "filter": {
+            "id": "={{ $('variables_1').item.json.id_contact }}"
+          },
+          "options": {
+            "with": [
+              "leads"
+            ]
+          },
+          "limit": 1
+        },
+        "type": "n8n-nodes-kommo.kommo",
+        "typeVersion": 1,
+        "position": [
+          16,
+          128
+        ],
+        "id": "54e965e5-dbf2-4c85-af2e-62ad85c80396",
+        "name": "Get list of contacts1",
+        "credentials": {
+          "kommoOAuth2Api": {
+            "id": "y2KeFBJwvTPMiZYT",
+            "name": "apvmotors"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "4d3efcb6-477d-4dd0-bc1f-cb972b8e808e",
+                "name": "custom_fields",
+                "value": "={{ $('Get list of contacts1').item.json._embedded.contacts[0].custom_fields_values }}",
+                "type": "array"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          400,
+          128
+        ],
+        "id": "7fea7fb6-7342-43b3-9e6b-819516a90aa3",
+        "name": "custom_fields1"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "dad480f4-2975-4ef1-bb09-ea82453608e5",
+                "leftValue": "={{ $('custom_fields1').item.json.custom_fields.filter(item => item.field_id==479326).map(item => item.field_name).join() }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 2.2,
+        "position": [
+          608,
+          128
+        ],
+        "id": "e917aa06-ffda-4687-acfa-de4573ea37c7",
+        "name": "tiene correo?1"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "custom_fields",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          816,
+          128
+        ],
+        "id": "23cdc84a-aa48-4520-8091-6d6769e78748",
+        "name": "Split Out2"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "a5dde5b7-07d9-4c34-b5d8-929b53fcf4bf",
+                "leftValue": "={{ $json.field_id }}",
+                "rightValue": 479326,
+                "operator": {
+                  "type": "number",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 2.2,
+        "position": [
+          1024,
+          128
+        ],
+        "id": "b8846e23-680d-44ca-bc28-e529079d177b",
+        "name": "solo correos1"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "values",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          1232,
+          128
+        ],
+        "id": "16888d38-7ee5-425f-843f-7551846614b0",
+        "name": "Split Out3"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "dd1432c6-9bda-4688-8a77-33de5c2e6309",
+                "name": "oorreo",
+                "value": "={{ $json.value }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1440,
+          128
+        ],
+        "id": "49e15cb1-5d68-4ba0-8251-1ec8cafc5610",
+        "name": "correos1"
+      },
+      {
+        "parameters": {
+          "fieldsToAggregate": {
+            "fieldToAggregate": [
+              {
+                "fieldToAggregate": "oorreo",
+                "renameField": true,
+                "outputFieldName": "correos_de_contacto"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          1648,
+          128
+        ],
+        "id": "d0e9c7a4-c435-43b1-928e-e552491a14a1",
+        "name": "Aggregate1"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "correos_de_contacto",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          1856,
+          128
+        ],
+        "id": "15ff8d20-9eff-4a2f-99e7-55a4acf1c457",
+        "name": "revisión individual1"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          2112,
+          128
+        ],
+        "id": "7301f103-4afc-468c-86ca-3d843aef4149",
+        "name": "Loop Over Items2"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "U1ZG5sdazb748RwB",
+            "mode": "list",
+            "cachedResultName": "Correos APV motors",
+            "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "correo",
+                "keyValue": "={{ $('Loop Over Items2').item.json.correos_de_contacto }}"
+              }
+            ]
+          },
+          "limit": 1
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1,
+        "position": [
+          2368,
+          256
+        ],
+        "id": "2b07d8d9-c6ea-41a3-8738-44fc253c56c5",
+        "name": "Get row(s)1",
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "dd777ff3-0a08-4bce-bae1-3f358fa457b5",
+                "leftValue": "={{ $json.id }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "number",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          2592,
+          256
+        ],
+        "id": "d249407b-0c68-4644-9487-59bec90eb3ca",
+        "name": "existe registro?1"
+      },
+      {
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "value": "U1ZG5sdazb748RwB",
+            "mode": "list",
+            "cachedResultName": "Correos APV motors",
+            "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "correo": "={{ $('Loop Over Items2').item.json.correos_de_contacto }}",
+              "id_ejecucion": "={{ $execution.id }}",
+              "id_contacto_kommo": "={{ $('variables_1').item.json.id_contact.toNumber() }}",
+              "id_lead_kommo": "={{ $('variables_2').item.json.id_lead.toNumber() }}",
+              "url_de_ejecucion": "=https://primary-production-dc03a.up.railway.app/workflow/XNhrnjUDaImQjzT0/executions/{{ $execution.id }}"
+            },
+            "matchingColumns": [
+              "correo"
+            ],
+            "schema": [
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_ejecucion",
+                "displayName": "id_ejecucion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "url_de_ejecucion",
+                "displayName": "url_de_ejecucion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_contacto_kommo",
+                "displayName": "id_contacto_kommo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_lead_kommo",
+                "displayName": "id_lead_kommo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1,
+        "position": [
+          2816,
+          256
+        ],
+        "id": "8a8c7082-9727-4f03-a452-025bf717bcc8",
+        "name": "Insert row2"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.sendpulse.com/oauth/access_token",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n   \"grant_type\":\"client_credentials\",\n   \"client_id\":\"01de80344731d7b62e61e0160925639b\",\n   \"client_secret\":\"12f47668a9c74cb2ab7d7d18c9585d61\"\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          4080,
+          192
+        ],
+        "id": "8babc629-25a5-4e30-9ca1-4bb5532dd854",
+        "name": "Crear bearer4",
+        "retryOnFail": true,
+        "maxTries": 5,
+        "waitBetweenTries": 5000,
+        "executeOnce": false
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.sendpulse.com/addressbooks/472435/emails",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "=Bearer {{ $json.access_token }}"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n   \"emails\":[\"{{ $('Loop Over Items2').item.json.correos_de_contacto }}\"]\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          4272,
+          192
+        ],
+        "id": "604df9c3-aba6-483e-a662-2f01f248475f",
+        "name": "Agregar correo1",
+        "retryOnFail": true,
+        "maxTries": 5,
+        "waitBetweenTries": 5000
+      },
+      {
+        "parameters": {
+          "url": "=https://api.usebouncer.com/v1.1/email/verify?email={{ $('Loop Over Items2').item.json.correos_de_contacto }}&timeout=25",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          3040,
+          256
+        ],
+        "id": "d1d6f588-0b14-45c6-a74b-66eb2be6a5f8",
+        "name": "verificar correo",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "KTwbvt1dvyVmwNAr",
+            "name": "bounce-apv-motor-1"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "notes",
+          "operation": "createNotes",
+          "notes": {
+            "common": [
+              {
+                "entity_id": "={{ $('variables_1').item.json.id_lead.toNumber() }}",
+                "text": "=XX El correo \"{{ $('Loop Over Items2').item.json.correos_de_contacto }}\" es INVALIDO, no se agrego a sendpulse XX"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-kommo.kommo",
+        "typeVersion": 1,
+        "position": [
+          3824,
+          432
+        ],
+        "id": "2e75b450-8a2b-4b89-b2b7-f1320728871c",
+        "name": "Create new notes",
+        "credentials": {
+          "kommoOAuth2Api": {
+            "id": "y2KeFBJwvTPMiZYT",
+            "name": "apvmotors"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "notes",
+          "operation": "createNotes",
+          "notes": {
+            "common": [
+              {
+                "entity_id": "={{ $('variables_2').item.json.id_lead.toNumber() }}",
+                "text": "=✔✔ El correo \"{{ $('Loop Over Items2').item.json.correos_de_contacto }}\" es VALIDO, se agrego a sendpulse ✔✔"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-kommo.kommo",
+        "typeVersion": 1,
+        "position": [
+          3808,
+          192
+        ],
+        "id": "8bf8b45b-d662-4136-8352-8535cdc3ea45",
+        "name": "Create new notes1",
+        "credentials": {
+          "kommoOAuth2Api": {
+            "id": "y2KeFBJwvTPMiZYT",
+            "name": "apvmotors"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "U1ZG5sdazb748RwB",
+            "mode": "list",
+            "cachedResultName": "Correos APV motors",
+            "cachedResultUrl": "/projects/b2lVB0vkIPboFk2w/datatables/U1ZG5sdazb748RwB"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Insert row2').item.json.id }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "estado_correo": "={{ $('verificar correo').item.json.status }}",
+              "razon_estado": "={{ $('verificar correo').item.json.reason }}",
+              "id_ejecucion": 0,
+              "id_contacto_kommo": 0,
+              "id_lead_kommo": 0,
+              "pasado_sendpulse": false
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_ejecucion",
+                "displayName": "id_ejecucion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "url_de_ejecucion",
+                "displayName": "url_de_ejecucion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_contacto_kommo",
+                "displayName": "id_contacto_kommo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_lead_kommo",
+                "displayName": "id_lead_kommo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "estado_correo",
+                "displayName": "estado_correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "razon_estado",
+                "displayName": "razon_estado",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_evento_cal_com",
+                "displayName": "id_evento_cal_com",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "id_agendamiento_cal_com",
+                "displayName": "id_agendamiento_cal_com",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "pasado_sendpulse",
+                "displayName": "pasado_sendpulse",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1,
+        "position": [
+          3264,
+          256
+        ],
+        "id": "91e75712-3f58-4c7f-aeac-ef08639dd5cd",
+        "name": "Update row(s)"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "bc42d53c-6219-42ec-ad63-ec2f8c621a74",
+                "leftValue": "={{ $('verificar correo').item.json.status }}",
+                "rightValue": "deliverable",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEquals"
+                }
+              },
+              {
+                "id": "ba454424-290d-4b3d-afad-fafec14841b3",
+                "leftValue": "={{ $('verificar correo').item.json.status }}",
+                "rightValue": "risky",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEquals"
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          3488,
+          256
+        ],
+        "id": "854b6591-4989-484b-987a-4e3a056fa4fa",
+        "name": "es bueno?"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "f94b8b2b-8318-4374-8bea-9150cc7c1c07",
+                "name": "id_contact",
+                "value": "={{ $json.body[\"contacts[update][0][id]\"] }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -208,
+          128
+        ],
+        "id": "c34f0106-d9c6-4118-8eee-c68d19817bc8",
+        "name": "variables_1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "f94b8b2b-8318-4374-8bea-9150cc7c1c07",
+                "name": "id_lead",
+                "value": "={{ $('Get list of contacts1').item.json._embedded.contacts[0]._embedded.leads[0].id }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          224,
+          128
+        ],
+        "id": "11aadc43-25b6-46f2-8948-e486675e5756",
+        "name": "variables_2"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.sendpulse.com/addressbooks/472435/emails",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImViNTFjNWIzYjRkYTUyMDNiZTQzYTA3NzhjZDljNjlmMjJjMmFhNWZiYTcyY2I0NGY3NTEzNmFhZGJlOTRlY2EyNjczZDJhMjc4MzY3ZjMwIn0.eyJhdWQiOiIwMWRlODAzNDQ3MzFkN2I2MmU2MWUwMTYwOTI1NjM5YiIsImp0aSI6ImViNTFjNWIzYjRkYTUyMDNiZTQzYTA3NzhjZDljNjlmMjJjMmFhNWZiYTcyY2I0NGY3NTEzNmFhZGJlOTRlY2EyNjczZDJhMjc4MzY3ZjMwIiwiaWF0IjoxNzY0Nzc2ODA5LCJuYmYiOjE3NjQ3NzY4MDksImV4cCI6MTc2NDc4MDQwOSwic3ViIjoiIiwic2NvcGVzIjpbXSwidXNlciI6eyJpZCI6OTI3MjE3NywiZ3JvdXBfaWQiOm51bGwsInBhcmVudF9pZCI6bnVsbCwiY29udGV4dCI6eyJhY2NsaW0iOiIwIn0sImFyZWEiOiJyZXN0IiwiYXBwX2lkIjpudWxsfX0.T-2il1xgGfaOsXoSW2oApLYi5qJNInKI0SKiIjTEc0R4heJ7Abw5TkF-mcNH6MIb0nf27jZgfdRizSww7Kd6jz8TO0IpUPL7cE-SntHl5ec78XpzbNC_naQ9ib0N3FNNZ5AAeXh8LC5q2H1B36xtNGbO9bIjtOpdn66T-RGCxPnNEKbkKiC4HMo9yf3yh1VRTWt-uW3NcN_66BkzYExsaOZXk1bkUCIGxOYx3h-gSUiRSXqwiFDugCW9kY4G4lc5kr5uotr-ExUz-LA60iFV_lDa0uaupdxeKPyzHQr3JJmwrx8YZsFXZIBcLmYqOXcF1G-uKU9jYNWhH4Rza1gnnQ"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n   \"emails\":[\"marinaestelap97@gmail.com\"]\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          4944,
+          496
+        ],
+        "id": "a054210e-a573-4523-be41-9f5a73d739e0",
+        "name": "Agregar correo",
+        "retryOnFail": false
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.sendpulse.com/oauth/access_token",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n   \"grant_type\":\"client_credentials\",\n   \"client_id\":\"01de80344731d7b62e61e0160925639b\",\n   \"client_secret\":\"12f47668a9c74cb2ab7d7d18c9585d61\"\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          4704,
+          512
+        ],
+        "id": "122474c7-f0cd-4abb-b669-4dc3a1824ac0",
+        "name": "Crear bearer",
+        "retryOnFail": true,
+        "maxTries": 5,
+        "waitBetweenTries": 5000
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "variables_1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get list of contacts1": {
+        "main": [
+          [
+            {
+              "node": "variables_2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "custom_fields1": {
+        "main": [
+          [
+            {
+              "node": "tiene correo?1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "tiene correo?1": {
+        "main": [
+          [
+            {
+              "node": "Split Out2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out2": {
+        "main": [
+          [
+            {
+              "node": "solo correos1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "solo correos1": {
+        "main": [
+          [
+            {
+              "node": "Split Out3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out3": {
+        "main": [
+          [
+            {
+              "node": "correos1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "correos1": {
+        "main": [
+          [
+            {
+              "node": "Aggregate1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate1": {
+        "main": [
+          [
+            {
+              "node": "revisión individual1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "revisión individual1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items2": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Get row(s)1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get row(s)1": {
+        "main": [
+          [
+            {
+              "node": "existe registro?1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "existe registro?1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Insert row2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Insert row2": {
+        "main": [
+          [
+            {
+              "node": "verificar correo",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Crear bearer4": {
+        "main": [
+          [
+            {
+              "node": "Agregar correo1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Agregar correo1": {
+        "main": [
+          []
+        ]
+      },
+      "verificar correo": {
+        "main": [
+          [
+            {
+              "node": "Update row(s)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create new notes1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create new notes": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update row(s)": {
+        "main": [
+          [
+            {
+              "node": "es bueno?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "es bueno?": {
+        "main": [
+          [
+            {
+              "node": "Create new notes1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Create new notes",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "variables_1": {
+        "main": [
+          [
+            {
+              "node": "Get list of contacts1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "variables_2": {
+        "main": [
+          [
+            {
+              "node": "custom_fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Crear bearer": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "authors": "Apv Motors",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "234ee22f-4978-471c-8212-31cf747bc585",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
